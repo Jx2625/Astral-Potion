@@ -1,8 +1,9 @@
 package com.muyu.potion.mixin;
 
-import com.muyu.potion.AstralEffect;
-import com.muyu.potion.config.ClientConfig;
-import com.muyu.potion.config.ClientConfig.AstralVisionMode;
+import com.muyu.potion.SpectreEffect;
+import com.muyu.potion.AnimusEffect;
+import com.muyu.config.ClientConfig;
+import com.muyu.config.ClientConfig.AstralVisionMode;
 import net.minecraft.client.Camera;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.core.BlockPos;
@@ -23,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 public class FogRendererMixin {
 
     @Unique
-    private static float astral$distance = 24.0F;
+    private static float spectre$distance = 24.0F;
 
     @Inject(
             at = @At(
@@ -34,7 +35,7 @@ public class FogRendererMixin {
             method = "setupFog",
             locals = LocalCapture.CAPTURE_FAILHARD
     )
-    private static void astral$setupFog(
+    private static void spectre$setupFog(
             Camera camera,
             FogRenderer.FogMode fogMode,
             float f,
@@ -46,7 +47,7 @@ public class FogRendererMixin {
             FogRenderer.FogData fogData
     ) {
         Entity cameraEntity = camera.getEntity();
-        if (!astral$renderShadowPhase(cameraEntity)) return;
+        if (!spectre$renderShadowPhase(cameraEntity)) return;
 
         AstralVisionMode mode = ClientConfig.ASTRAL_VISION_MODE.get();
 
@@ -59,7 +60,7 @@ public class FogRendererMixin {
         }
 
         if (entity instanceof LivingEntity livingEntity) {
-            boolean lock = astral$getViewBlockingState(livingEntity) != null;
+            boolean lock = spectre$getViewBlockingState(livingEntity) != null;
 
             if (mode == AstralVisionMode.FADE && lock) {
                 fogData.start = 8.0f;
@@ -67,27 +68,28 @@ public class FogRendererMixin {
                 return;
             }
 
-            if (astral$distance == f && !lock) return;
-            if (astral$distance > 12 && lock) astral$distance -= 2.0F;
-            if (!lock && astral$distance < f) astral$distance += 1.0F;
+            if (spectre$distance == f && !lock) return;
+            if (spectre$distance > 12 && lock) spectre$distance -= 2.0F;
+            if (!lock && spectre$distance < f) spectre$distance += 1.0F;
 
-            float h = astral$distance;
+            float h = spectre$distance;
             fogData.start = fogData.mode == FogRenderer.FogMode.FOG_SKY ? 0.0f : h * 0.75f;
             fogData.end = h;
         }
     }
 
-    // ===== 补全：辅助方法 =====
+    // ===== 辅助方法 =====
 
     @Unique
-    private static boolean astral$renderShadowPhase(Entity entity) {
+    private static boolean spectre$renderShadowPhase(Entity entity) {
         return entity instanceof LivingEntity livingEntity
-                && livingEntity.hasEffect(AstralEffect.ASTRAL.get());
+                && (livingEntity.hasEffect(SpectreEffect.SPECTRE.get())
+                || livingEntity.hasEffect(AnimusEffect.ANIMUS.get()));
     }
 
     @Unique
     @Nullable
-    private static BlockState astral$getViewBlockingState(LivingEntity player) {
+    private static BlockState spectre$getViewBlockingState(LivingEntity player) {
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
         for (int i = 0; i < 8; ++i) {
             double d = player.getX() + (double)(((float)((i) % 2) - 0.5f) * player.getBbWidth() * 0.8f);

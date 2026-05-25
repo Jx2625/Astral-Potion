@@ -1,8 +1,9 @@
 package com.muyu.potion.client;
 
-import com.muyu.potion.AstralEffect;
-import com.muyu.potion.config.ClientConfig;
-import com.muyu.potion.config.ClientConfig.AstralVisionMode;
+import com.muyu.potion.SpectreEffect;
+import com.muyu.potion.AnimusEffect;
+import com.muyu.config.ClientConfig;
+import com.muyu.config.ClientConfig.AstralVisionMode;
 import net.minecraft.client.Camera;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -26,8 +27,8 @@ public class CameraEvents {
         }
 
         Camera camera = event.getCamera();
-        if (astral$renderShadowPhase(camera.getEntity())
-                && astral$getViewBlockingState((LivingEntity) camera.getEntity()) != null) {
+        if (spectre$renderShadowPhase(camera.getEntity())
+                && spectre$getViewBlockingState((LivingEntity) camera.getEntity()) != null) {
 
             if (ClientConfig.ASTRAL_VISION_MODE.get() == AstralVisionMode.FADE) {
                 event.setRed(0.1F);
@@ -44,15 +45,16 @@ public class CameraEvents {
     @SubscribeEvent
     public void renderBlockScreen(RenderBlockScreenEffectEvent event) {
         if (event.getOverlayType() == RenderBlockScreenEffectEvent.OverlayType.BLOCK
-                && event.getPlayer().hasEffect(AstralEffect.ASTRAL.get())) {
+                && (event.getPlayer().hasEffect(SpectreEffect.SPECTRE.get())
+                || event.getPlayer().hasEffect(AnimusEffect.ANIMUS.get()))) {
             event.setCanceled(true);
         }
     }
 
-    // ===== 补全：辅助方法 =====
+    // ===== 辅助方法 =====
 
     @Nullable
-    private static BlockState astral$getViewBlockingState(LivingEntity player) {
+    private static BlockState spectre$getViewBlockingState(LivingEntity player) {
         BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
         for (int i = 0; i < 8; ++i) {
             double d = player.getX() + (double)(((float)((i) % 2) - 0.5f) * player.getBbWidth() * 0.8f);
@@ -69,8 +71,9 @@ public class CameraEvents {
         return null;
     }
 
-    private static boolean astral$renderShadowPhase(Entity entity) {
+    private static boolean spectre$renderShadowPhase(Entity entity) {
         return entity instanceof LivingEntity livingEntity
-                && livingEntity.hasEffect(AstralEffect.ASTRAL.get());
+                && (livingEntity.hasEffect(SpectreEffect.SPECTRE.get())
+                || livingEntity.hasEffect(AnimusEffect.ANIMUS.get()));
     }
 }

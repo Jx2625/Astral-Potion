@@ -1,8 +1,26 @@
 {
-  "effect.astralpotion.astral": "Astral",
-  "item.minecraft.potion.effect.astral": "Potion of Astral",
-  "item.minecraft.potion.effect.long_astral": "Potion of Long Astral",
-  "item.minecraft.splash_potion.effect.astral": "Splash Potion of Astral",
-  "item.minecraft.lingering_potion.effect.astral": "Lingering Potion of Astral",
+  "effect.astralpotion.spectre": "Spectre",
+  "effect.astralpotion.spectre.desc": "Can pass through solid blocks",
+  "effect.astralpotion.animus": "Animus",
+  "effect.astralpotion.animus.desc": "Can pass through all blocks and gain flight",
+
+  "item.minecraft.potion.effect.spectre": "Potion of Spectre",
+  "item.minecraft.potion.effect.long_spectre": "Potion of Spectre",
+  "item.minecraft.splash_potion.effect.spectre": "Splash Potion of Spectre",
+  "item.minecraft.splash_potion.effect.long_spectre": "Splash Potion of Spectre",
+  "item.minecraft.lingering_potion.effect.spectre": "Lingering Potion of Spectre",
+  "item.minecraft.lingering_potion.effect.long_spectre": "Lingering Potion of Spectre",
+  "item.minecraft.tipped_arrow.effect.spectre": "Arrow of Spectre",
+  "item.minecraft.tipped_arrow.effect.long_spectre": "Arrow of Spectre",
+
+  "item.minecraft.potion.effect.animus": "Potion of Animus",
+  "item.minecraft.potion.effect.long_animus": "Potion of Animus",
+  "item.minecraft.splash_potion.effect.animus": "Splash Potion of Animus",
+  "item.minecraft.splash_potion.effect.long_animus": "Splash Potion of Animus",
+  "item.minecraft.lingering_potion.effect.animus": "Lingering Potion of Animus",
+  "item.minecraft.lingering_potion.effect.long_animus": "Lingering Potion of Animus",
+  "item.minecraft.tipped_arrow.effect.animus": "Arrow of Animus",
+  "item.minecraft.tipped_arrow.effect.long_animus": "Arrow of Animus",
+
   "item.astralpotion.soul_shard": "Soul Shard"
 }

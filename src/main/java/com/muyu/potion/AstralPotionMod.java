@@ -1,7 +1,7 @@
 package com.muyu.potion;
 
 import com.muyu.potion.client.ClientSetup;
-import com.muyu.potion.config.ClientConfig;
+import com.muyu.config.ClientConfig;
 import com.muyu.potion.init.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,7 +30,8 @@ public class AstralPotionMod {
         // 注册灵魂碎片
         ModItems.ITEMS.register(modEventBus);
 
-        AstralEffect.EFFECTS.register(modEventBus);
+        SpectreEffect.EFFECTS.register(modEventBus);     //魂体效果
+        AnimusEffect.EFFECTS.register(modEventBus);      //灵息效果
         AstralPotions.POTIONS.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
 
@@ -39,6 +40,7 @@ public class AstralPotionMod {
         }
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(AstralEventHandler.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

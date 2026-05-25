@@ -7,18 +7,17 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class AstralEffect extends MobEffect {
+public class SpectreEffect extends MobEffect {
 
     public static final DeferredRegister<MobEffect> EFFECTS =
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, AstralPotionMod.MODID);
 
-    public static final RegistryObject<MobEffect> ASTRAL = EFFECTS.register("astral",
-            () -> new AstralEffect(MobEffectCategory.NEUTRAL, 0x8E44AD));
+    public static final RegistryObject<MobEffect> SPECTRE = EFFECTS.register("spectre",
+            () -> new SpectreEffect(MobEffectCategory.NEUTRAL, 0x8E44AD));
 
-    public AstralEffect(MobEffectCategory category, int color) {
+    public SpectreEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
-
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {

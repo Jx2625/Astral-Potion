@@ -1,6 +1,6 @@
 package com.muyu.potion.mixin;
 
-import com.muyu.potion.AstralEffect;
+import com.muyu.potion.SpectreEffect;
 import com.muyu.potion.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -32,7 +32,7 @@ public class BlockStateBaseMixin {
             method = "getCollisionShape(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;",
             cancellable = true
     )
-    private void astral$getCollisionShape(
+    private void spectre$getCollisionShape(
             BlockGetter blockGetter,
             BlockPos blockPos,
             CollisionContext collisionContext,
@@ -47,24 +47,24 @@ public class BlockStateBaseMixin {
                     - (livingEntity.onGround() ? 0.5F : 0.001F);
             boolean flag = !above || livingEntity.isShiftKeyDown();
 
-            if (livingEntity.hasEffect(AstralEffect.ASTRAL.get())
+            if (livingEntity.hasEffect(SpectreEffect.SPECTRE.get())
                     && flag
-                    && !blockGetter.getBlockState(blockPos).is(ModTags.OMIT_ASTRAL)) {
+                    && !blockGetter.getBlockState(blockPos).is(ModTags.OMIT_SPECTRE)) {
                 cir.setReturnValue(Shapes.empty());
             }
         }
     }
 
     @Inject(at = @At("RETURN"), method = "entityInside", cancellable = true)
-    private void astral$entityInside(
+    private void spectre$entityInside(
             Level level,
             BlockPos blockPos,
             Entity entity,
             CallbackInfo ci
     ) {
         if (entity instanceof LivingEntity livingEntity
-                && livingEntity.hasEffect(AstralEffect.ASTRAL.get())
-                && !level.getBlockState(blockPos).is(ModTags.OMIT_ASTRAL)) {
+                && livingEntity.hasEffect(SpectreEffect.SPECTRE.get())
+                && !level.getBlockState(blockPos).is(ModTags.OMIT_SPECTRE)) {
 
             ci.cancel();
 

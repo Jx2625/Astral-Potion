@@ -1,4 +1,4 @@
-package com.muyu.potion.datagen;
+package com.muyu.datagen;
 
 import com.muyu.potion.AstralPotionMod;
 import com.muyu.potion.init.ModTags;
@@ -23,6 +23,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        this.tag(ModTags.OMIT_ASTRAL).add(Blocks.BEDROCK);
+        this.tag(ModTags.OMIT_SPECTRE).add(Blocks.BEDROCK);
     }
 }

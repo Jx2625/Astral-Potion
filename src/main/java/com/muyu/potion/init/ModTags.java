@@ -9,6 +9,6 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
 
     // 魂体效果无法穿过的方块（如基岩）
-    public static final TagKey<Block> OMIT_ASTRAL = BlockTags.create(
-            new ResourceLocation(AstralPotionMod.MODID, "omit_astral"));
+    public static final TagKey<Block> OMIT_SPECTRE = BlockTags.create(
+            new ResourceLocation(AstralPotionMod.MODID, "omit_spectre"));
 }

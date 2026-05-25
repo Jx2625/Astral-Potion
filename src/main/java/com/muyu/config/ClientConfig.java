@@ -1,4 +1,4 @@
-package com.muyu.potion.config;
+package com.muyu.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
@@ -17,7 +17,7 @@ public class ClientConfig {
         builder.push("client");
 
         ASTRAL_VISION_MODE = builder
-                .comment("魂体状态下的视觉模式",
+                .comment("魂体/灵息状态下的视觉模式",
                         "VANILLA - 原版黑屏效果（沉浸但影响导航）",
                         "SPECTATOR - 旁观者式完全透明（清晰但可能破坏氛围)",
                         "FADE - 半透明淡化（平衡方案）")
