@@ -1,0 +1,12 @@
+{
+  "effect.astralpotion.astral": "魂体",
+  "item.minecraft.potion.effect.astral": "魂体药水",
+  "item.minecraft.splash_potion.effect.astral": "喷溅型魂体药水",
+  "item.minecraft.lingering_potion.effect.astral": "滞留型魂体药水",
+  "item.minecraft.tipped_arrow.effect.astral": "魂体之箭",
+  "item.minecraft.potion.effect.long_astral": "魂体药水",
+  "item.minecraft.splash_potion.effect.long_astral": "喷溅型魂体药水",
+  "item.minecraft.lingering_potion.effect.long_astral": "滞留型魂体药水",
+  "item.minecraft.tipped_arrow.effect.long_astral": "魂体之箭",
+  "item.astralpotion.soul_shard": "灵魂碎片"
+}
