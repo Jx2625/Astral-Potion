@@ -71,16 +71,16 @@ compileTestJava {
 //===== jar 名称 =====
 jar {
     archiveBaseName = 'astral-potion'
-    archiveVersion = '1.0.0'
+    archiveVersion = '1.0.1'
 
     manifest {
         attributes([
                 'Specification-Title': 'astral-potion',
-                'Specification-Vendor': 'muyu',
+                'Specification-Vendor': 'Muyu',
                 'Specification-Version': '1',
                 'Implementation-Title': 'Astral-Potion',
-                'Implementation-Version': '1.0.0',
-                'Implementation-Vendor': 'muyu',
+                'Implementation-Version': mod_version,
+                'Implementation-Vendor': 'Muyu',
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
