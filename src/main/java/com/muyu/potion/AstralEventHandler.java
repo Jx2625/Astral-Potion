@@ -24,9 +24,8 @@ public class AstralEventHandler {
             player.getAbilities().flying = true;
             // 同步能力到客户端
             player.onUpdateAbilities();
-        } else if (!hasSpectre && !player.isSpectator()) {
+        } else if (player.noPhysics) {
             player.noPhysics = false;
-            player.getAbilities().flying = false;
             player.onUpdateAbilities();
         }
     }
