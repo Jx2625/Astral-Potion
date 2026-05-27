@@ -60,4 +60,6 @@ LexManos' Install Video: https://youtu.be/8VEdtQLuLO0
 Forge Forums: https://forums.minecraftforge.net/
 Forge Discord: https://discord.minecraftforge.net/
 
+## Credits
 
+Astral vision / block phasing mechanics inspired by [Galosphere](https://github.com/0rc1nus/Galosphere-Main/tree/forge-1.20) by [0rc1nus](https://github.com/0rc1nus)
