@@ -22,7 +22,9 @@ public class CameraEvents {
 
     @SubscribeEvent
     public void computeFogColor(ViewportEvent.ComputeFogColor event) {
-        if (ClientConfig.ASTRAL_VISION_MODE.get() == AstralVisionMode.SPECTATOR) {
+        // SPECTATOR 和 XRAY 模式都不修改雾颜色（保持清晰）
+        AstralVisionMode mode = ClientConfig.ASTRAL_VISION_MODE.get();
+        if (mode == AstralVisionMode.SPECTATOR || mode == AstralVisionMode.XRAY) {
             return;
         }
 
@@ -30,7 +32,7 @@ public class CameraEvents {
         if (spectre$renderShadowPhase(camera.getEntity())
                 && spectre$getViewBlockingState((LivingEntity) camera.getEntity()) != null) {
 
-            if (ClientConfig.ASTRAL_VISION_MODE.get() == AstralVisionMode.FADE) {
+            if (mode == AstralVisionMode.FADE) {
                 event.setRed(0.1F);
                 event.setGreen(0.1F);
                 event.setBlue(0.1F);

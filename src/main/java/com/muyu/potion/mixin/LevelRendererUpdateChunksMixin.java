@@ -11,29 +11,28 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(LevelRenderer.class)
-public class LevelRendererSetupRenderMixin {
+public class LevelRendererUpdateChunksMixin {
 
     @ModifyVariable(
-            method = "setupRender(Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/culling/Frustum;ZZ)V",
+            method = "updateRenderChunks",
             at = @At("HEAD"),
             argsOnly = true,
-            ordinal = 1  // 第2个boolean参数（isSpectator）,跳过视锥剔除
+            ordinal = 0 // boolean p_194367_ (smartCull),禁用遮挡剔除
     )
-    private boolean astral$forceSpectatorForCulling(boolean isSpectator) {
-        if (isSpectator) return true;
-        //SPECTATOR 模式
-        if (ClientConfig.ASTRAL_VISION_MODE.get() != AstralVisionMode.SPECTATOR) {
-            return false;
+    private boolean astral$disableOcclusion(boolean smartCull) {
+        //XRAY 模式
+        if (ClientConfig.ASTRAL_VISION_MODE.get() != AstralVisionMode.XRAY) {
+            return smartCull;
         }
 
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player == null) return false;
+        if (mc.player == null) return smartCull;
 
         if (mc.player.hasEffect(SpectreEffect.SPECTRE.get())
                 || mc.player.hasEffect(AnimusEffect.ANIMUS.get())) {
-            return true;
+            return false;  // 禁用遮挡剔除
         }
 
-        return isSpectator;
+        return smartCull;
     }
 }

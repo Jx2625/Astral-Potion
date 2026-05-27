@@ -51,7 +51,8 @@ public class FogRendererMixin {
 
         AstralVisionMode mode = ClientConfig.ASTRAL_VISION_MODE.get();
 
-        if (mode == AstralVisionMode.SPECTATOR) {
+        // SPECTATOR 和 XRAY 模式都完全禁用雾
+        if (mode == AstralVisionMode.SPECTATOR || mode == AstralVisionMode.XRAY) {
             if (fogType == FogType.NONE) {
                 fogData.start = Float.MAX_VALUE;
                 fogData.end = Float.MAX_VALUE;

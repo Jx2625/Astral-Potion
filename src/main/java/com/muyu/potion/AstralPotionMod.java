@@ -1,6 +1,7 @@
 package com.muyu.potion;
 
 import com.muyu.potion.client.ClientSetup;
+import com.muyu.potion.command.CommandEventHandler;
 import com.muyu.config.ClientConfig;
 import com.muyu.potion.init.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
@@ -41,6 +42,7 @@ public class AstralPotionMod {
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(AstralEventHandler.class);
+        MinecraftForge.EVENT_BUS.register(CommandEventHandler.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

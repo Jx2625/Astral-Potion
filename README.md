@@ -1,4 +1,19 @@
 
+SPECTATOR 模式 与 XRAY 模式 的对比
+--------------------------------
+
+| 场景      | `setupRender` (SPECTATOR MODE) | `updateRenderChunks` (XRAY MODE) |
+|---------|--------------------------------|----------------------------------|
+| 玩家面前    | ✅ 渲染                           | ✅ 渲染                             |
+| 玩家背后    | ✅ 渲染（跳过视锥剔除）                   | ❌ 不渲染（视锥剔除仍在）                    |
+| 玩家左侧/右侧 | ✅ 渲染                           | ❌ 不渲染                            |
+| 头顶上方/脚下 | ✅ 渲染                           | ❌ 不渲染                            |
+| 视野内被墙挡住 | ✅ 渲染                           | ✅ 渲染                             |
+-----------------------------------------------------------------------------
+关键差异：SPECTATOR 模式渲染360°全方向，XRAY模式 只渲染视野前方扇形区域。
+-----------------------------------------------------------------------------
+
+
 Source installation information for modders
 -------------------------------------------
 This code follows the Minecraft Forge installation methodology. It will apply
@@ -44,3 +59,5 @@ Community Documentation: https://docs.minecraftforge.net/en/1.20.1/gettingstarte
 LexManos' Install Video: https://youtu.be/8VEdtQLuLO0
 Forge Forums: https://forums.minecraftforge.net/
 Forge Discord: https://discord.minecraftforge.net/
+
+
