@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "astralpotion.refmap.json",
   "client": [
-    "FogRendererMixin"
+    "FogRendererMixin",
+    "LevelRendererSetupRenderMixin"
   ],
   "mixins": [
     "BlockStateBaseMixin",
