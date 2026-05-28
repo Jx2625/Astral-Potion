@@ -1,4 +1,4 @@
-package com.muyu.potion.mixin;
+package com.muyu.potion.mixin.client;
 
 import com.muyu.potion.SpectreEffect;
 import com.muyu.potion.AnimusEffect;
