@@ -13,7 +13,7 @@ public class SpectreEffect extends MobEffect {
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, AstralPotionMod.MODID);
 
     public static final RegistryObject<MobEffect> SPECTRE = EFFECTS.register("spectre",
-            () -> new SpectreEffect(MobEffectCategory.NEUTRAL, 0x8E44AD));
+            () -> new SpectreEffect(MobEffectCategory.BENEFICIAL, 0x8E44AD));
 
     public SpectreEffect(MobEffectCategory category, int color) {
         super(category, color);
